@@ -1,0 +1,57 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jun 13 11:42:59 2023
+
+@author: danist
+"""
+
+# Read Excel file
+
+import pandas as pd
+from biopandas.pdb import PandasPdb
+excel_file = 'Hemes_Bfr2_DS.xlsx'
+xl_df = pd.read_excel(excel_file , sheet_name='1.5d')
+
+read_PDB = PandasPdb().read_pdb("284_Bfr2_coods_draft.pdb") 
+PDB_HETATM_df = read_PDB.df['HETATM']
+
+##finding the column of a key
+PDB_HETATM_df["chain_id"] #the key
+indexer = PDB_HETATM_df.columns.get_loc("chain_id") #the func to find the loc
+
+# xl column names
+record=xl_df["record_type"]
+atom_number=xl_df["atom_number"]
+atom_name=xl_df["atom_name"]
+residues_name=xl_df["residues_name"]
+chains= xl_df["chains"]
+residue_number=xl_df["residue_number"]
+x=xl_df["x"]
+y=xl_df["y"]
+z=xl_df["z"]
+
+
+#changing the chain_id and coordinates
+indexer = PDB_HETATM_df.columns.get_loc("x_coord")
+chain_index=0
+for index, line in PDB_HETATM_df.iterrows():
+    if chain_index < len(chains)-2 : ##since there are values under relevant rows, need to drop the extra 2rows
+        PDB_HETATM_df.iloc[index,PDB_HETATM_df.columns.get_loc("chain_id")] = chains[chain_index]   #changing the chain_id 
+        PDB_HETATM_df.iloc[index,PDB_HETATM_df.columns.get_loc("x_coord")] = float(x[chain_index])
+        PDB_HETATM_df.iloc[index,PDB_HETATM_df.columns.get_loc("y_coord")] = float(y[chain_index])
+        PDB_HETATM_df.iloc[index,PDB_HETATM_df.columns.get_loc("z_coord")] = float(z[chain_index])
+        chain_index=chain_index+1
+    if index > chain_index-1 : ## extra rows in the original pdb file that was used 
+       # PDB_HETATM_df.iloc[index] = ""
+        PDB_HETATM_df=PDB_HETATM_df.drop(index) #delete all extra rows in the original pdb file that was used 
+
+
+read_PDB.df['HETATM']= PDB_HETATM_df
+
+read_PDB.to_pdb(path='Bfr_coords_1-5d.pdb', #save pdb
+            records=None, 
+            gz=False, 
+            append_newline=True)
+            
+
+
