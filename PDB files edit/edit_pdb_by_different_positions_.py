@@ -51,3 +51,7 @@ read_PDB1.to_pdb(path='C:/Users/danist/OneDrive - post.bgu.ac.il/Ph.D/Bfr/relion
             records=None, 
             gz=False, 
             append_newline=True)
+
+#print the residues and positions of the differences.
+for i in diff_positions_list:
+    print(Bfr1[i-1], i)
