@@ -1,0 +1,14 @@
+
+#seqs with 1st position changed from M to the aa of the vector(same as pdb)
+Bfr1= "PRGSPKVISVLNGLLTGELTAADQYFVHARMLENWGFKVLYERIEHERHDELDHAGLLINRILFLEGVPDVASRAALNIGSDVPKMMANDLAYELQVVDELKAAIALCESERDYDTRRILVHLLEETEQDHVRWLEVQVGLIDKLGLKNYLQSAAGEIA"
+Bfr2= "DKANRTVLAALNDVLRHQLTAINQYFLHARMMKNWGFNALGKHEYKESIEEMKAADKLIERILLLEGLPNLQDLGKLLIGENVPEMLKNDFAMEKDAHADLVKTIALCEKQADYVSRDLLSEFLEECEERMDFYETQLELVKKMGEQNYLQSAVGALED"
+
+diff_positions_list= [] #list for the seq positions where Bfr1 and Bfr2 are different
+
+for i in range(len(Bfr1)-1):
+    if i+1 <= 129: # to match index with aa position
+        Bfr1_i = i # up to aa 129, same index
+    else:
+        Bfr1_i = i+1 # for 130 and upwards, we want to incrase A index by 1      
+    if Bfr1[Bfr1_i] != Bfr2[i]:
+        diff_positions_list.append(i+1) #correction of the indexing for the pdb.
