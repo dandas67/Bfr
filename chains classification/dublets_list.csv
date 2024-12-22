@@ -1,0 +1,13 @@
+ChainFileName,TH,Chains1,DimerChainFileNAme,TH,Chains2,Number1,Number2,expected,Dimer
+chain_plus_heme_A.mrc,0.42,A,chain_plus_heme_Q.mrc,0.42,Q,1,17,2,AQ
+chain_plus_heme_B.mrc,0.42,B,chain_plus_heme_O.mrc,0.42,O,2,15,1,BO
+chain_plus_heme_C.mrc,0.42,C,chain_plus_heme_V.mrc,0.42,V,3,22,1,CV
+chain_plus_heme_D.mrc,0.42,D,chain_plus_heme_U.mrc,0.42,U,4,21,2,DU
+chain_plus_heme_E.mrc,0.42,E,chain_plus_heme_P.mrc,0.42,P,5,16,1,EP
+chain_plus_heme_F.mrc,0.42,F,chain_plus_heme_R.mrc,0.42,R,6,18,1.5,FR
+chain_plus_heme_G.mrc,0.42,G,chain_plus_heme_K.mrc,0.42,K,7,11,2,GK
+chain_plus_heme_H.mrc,0.42,H,chain_plus_heme_N.mrc,0.42,N,8,14,2,HN
+chain_plus_heme_I.mrc,0.42,I,chain_plus_heme_S.mrc,0.42,S,9,19,1,IS
+chain_plus_heme_J.mrc,0.42,J,chain_plus_heme_T.mrc,0.42,T,10,20,1,JT
+chain_plus_heme_L.mrc,0.42,L,chain_plus_heme_W.mrc,0.42,W,12,23,1,LW
+chain_plus_heme_M.mrc,0.42,M,chain_plus_heme_X.mrc,0.42,X,13,24,1,MX
